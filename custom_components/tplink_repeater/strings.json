@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nawiązywanie połączenia z TP-Link Range Extender",
+        "description": "Zdefiniuj podstawowe parametry kryptograficzne niezbędne do nawiązania poświadczenia webowego (stok).",
+        "data": {
+          "host": "Adres IP Wzmacniacza (np. 192.168.0.5)",
+          "username": "Konto Administratora (pozostaw admin w 90% przypadków)",
+          "password": "Hasło panelu LuCI"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Awaria trasy IP. Router odrzucił komunikację (Timeout). Sprawdź podsieć.",
+      "invalid_auth": "Autoryzacja załamana. Klucz RSA/AES z routera zdestabilizowany z podanym hasłem.",
+      "unknown": "Krytyczny przypadek w obsłudze asynchronicznego żądania."
+    },
+    "abort": {
+      "already_configured": "To konkretne fizycznie urządzenie sieciowe TP-Link widnieje już w systemowej bazie Device Registry platformy Home Assistant."
+    }
+  }
+}

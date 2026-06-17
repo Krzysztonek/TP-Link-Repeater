@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to TP-Link Range Extender",
+        "description": "Define the basic cryptographic parameters necessary to establish a web session (stok).",
+        "data": {
+          "host": "Repeater IP Address (e.g., 192.168.0.5)",
+          "username": "Administrator Account (leave as admin in 90% of cases)",
+          "password": "LuCI Panel Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "IP routing failure. The router rejected communication (Timeout). Check your subnet.",
+      "invalid_auth": "Authentication failed. RSA/AES key exchange failed with the provided password.",
+      "unknown": "Critical error during asynchronous request handling."
+    },
+    "abort": {
+      "already_configured": "This specific TP-Link network device is already present in Home Assistant's Device Registry."
+    }
+  }
+}
