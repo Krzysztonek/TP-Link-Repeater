@@ -45,24 +45,25 @@ Troubleshooting
     It's possible that the integration script was unable to communicate correctly with the extender's admin panel within the allotted time, or the request was rejected by the device.
 
 Given the specific nature of TP-Link devices, here are the most common causes of this error and how to resolve them:
+indicates that the integration script was unable to establish a proper connection with the repeater's administrative panel within the designated time, or the request was actively dropped by the device. Here are the most common causes for this error and how to resolve them:
 
-Active session in browser or app (Most common cause):
-The web interface of TP-Link devices only supports one logged-in user at a time for security reasons. If you have the router dashboard open in a web browser or the TP-Link Tether app open on your smartphone while attempting to configure the integration in Home Assistant, the extender will immediately reject the Home Assistant connection.
+    Active Session in a Browser or App (Most Common Cause):
+    For security reasons, the TP-Link web interface strictly supports only one logged-in user at a time. If you have the router's panel open in a web browser or the TP-Link Tether app running on your smartphone while attempting to set up the integration in Home Assistant, the extender will immediately reject the new connection.
 
-Solution: Manually log out of the browser dashboard, close the Tether app, and try adding the integration again.
+    Solution: Manually log out of the panel in your browser, completely close the Tether app, and try adding the integration again.
 
-Web Encrypted Password Requirement:
-Depending on the firmware version (especially after updates), the device may not accept a plaintext password.
+    Web Encrypted Password Requirement:
+    Depending on your firmware version (especially after recent updates), the device may not accept your password in plain text and requires it to be encrypted by the web interface first.
 
-Solution: Go to the extender's login page in your browser and enter your password in the login field (do not click "Login" yet). Then, click elsewhere on the page and press F12 to open the browser's developer console. Enter the command: document.getElementById("login-password").value; and press Enter. Copy the long string returned and use it as the password in the Home Assistant configuration window.
+    Solution: Go to the repeater's login page in your web browser. Type your password into the password field (but do not click log in). Click somewhere else on the page so the password field is no longer selected. Open your browser's Developer Tools (usually by pressing F12 and going to the "Console" tab). Type the command document.getElementById("login-password").value; and press Enter. Copy the long string of characters it returns and paste that into the password field in Home Assistant.
 
-Forced HTTPS Connection:
-If you have enabled "Local Management via HTTPS" in the extender's advanced administration settings, attempting to connect via the standard HTTP port will result in an error.
+    Forced HTTPS Connection:
+    If you have enabled "Local Management via HTTPS" in the advanced administration settings of your extender, attempting to connect using standard HTTP will result in a timeout or connection drop.
 
-Solution: In the Home Assistant configuration window, try forcing the protocol in the IP address field by entering, for example, https://192.168.0.5.
+    Solution: In the Home Assistant configuration window, try forcing the secure protocol by typing it directly into the host field (e.g., https://192.168.0.5).
 
-Incorrect Username:
-Although most TP-Link devices use the admin account, some specific firmware versions use the default username "user." Confirm which of these values ​​is correct for your device.
+    Incorrect Username:
+    While the vast majority of TP-Link devices use admin as the default username, some specific models and firmware versions use user instead. Double-check which username applies to your specific device.
 
-Different Device IP Address:
-Make sure the extender has a static IP address (Static IP / DHCP Reservation) assigned on your main home router. If the device has just restarted, it may have received a new IP address from the DHCP server.
+    Dynamic IP Address:
+    Make sure your range extender has a Static IP or DHCP Reservation assigned on your main home router. If the repeater restarted recently, it might have been assigned a completely new IP address by the DHCP server, making the old address unreachable.
